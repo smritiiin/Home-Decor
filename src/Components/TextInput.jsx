@@ -1,18 +1,17 @@
 // import { AiFillEyeInvisible } from "react-icons/ai"
 
- export const TextInput =({placeholder,type, inputStyle, className, onTextChange, disabled, maxLength, value}) => {
+ export const TextInput =({placeholder,type, className, disabled, maxLength, name}) => {
     return(
-            <div style={inputStyle}>
+            <div>
                 <input
                     placeholder={placeholder}
-                    onChange={onTextChange}
+                    name={name}
+                    // onChange={(e)=>{onChange(e.target.value)}}
                     type={type}
-                    className={className}
-                    style={{ ...inputStyle}}
+                    className="block text-md font-medium text-gray-900 p-2 mx-10 mb-3 rounded-md w-60"
                     disabled= {disabled}
                     maxLength={maxLength}
                 >
-                    {value}
                 </input>
             </div>
            

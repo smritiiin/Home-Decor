@@ -1,10 +1,8 @@
 export const Button=
-({type, value, onClick, disabled, className, buttonStyle})=>{
+({ value, onClick, className, buttonStyle})=>{
     return(
         <button
-        type= {type}
         onClick={onClick}
-        disabled={disabled}
         className={className}
         style={{...styles.button, ...buttonStyle}}>
             {value}
