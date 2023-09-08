@@ -1,9 +1,9 @@
 import Nav from '../Components/Nav';
-import {Button} from '../Components/Button';
+// import {Button} from '../Components/Button';
 import {Footer} from '../Components/Footer';
 // import {ProductImg, ProductDetails} from '../Components/Product';
-import LandingImg from '../Assets/landing6.jpg';
-import {useState} from 'react';
+// import LandingImg from '../Assets/landing6.jpg';
+// import {useState} from 'react';
 
 const Home=()=>{
     return(
@@ -38,10 +38,6 @@ const Home=()=>{
                 <Footer/>
             </div>
         </div>
-       
-    )
-}
-
-
+    )}
 
 export default Home;

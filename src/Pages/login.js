@@ -1,7 +1,11 @@
 import {Button} from "./../Components/Button";
-import {TextInput} from "./../Components/TextInput";
+// import {TextInput} from "./../Components/TextInput";
 import { useState } from 'react';
 import { Link, useNavigate} from 'react-router-dom';
+import {login} from '../API/login';
+import signInSignUpDiv from '../Components/SigninContainer';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+
 import coverimg from "../Assets/loginsvg.svg";
 import google from '../Assets/google.png'
 import facebook from './../Assets/facebook.png'
@@ -9,19 +13,32 @@ import microsoft from './../Assets/microsoft.png'
 
 const Login=()=>{
     const navigate = useNavigate();
-    const [userName, setUserName] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+  
+  
+    const handleTogglePasswordVisibility = () => {
+      setShowPassword(!showPassword);
+    };
 
-   const handlesubmit =(e)=>{
-    e.preventDefault();
-    console.log("Submitted")
-   }
-   const errorfunction = (e)=>{
-    if (!userName || !password){
-        alert('Please fill all the fields')
-        
-    }
-   }
+    
+      const onLogin = async (e)=>{
+        e.preventDefault();
+        console.log(email);
+        console.log(password);
+        const resp = await login({ email, password });
+        if (resp.success) {
+            document.cookie = `x-access-token=${resp.data.token}; path=/;`;
+            alert("Navigating....");
+            navigate("/");
+        } else {
+            alert("NOOO...")
+            alert(resp.error);
+        }
+      }
+   
+
     return(
         // container div 
         <div className="grid grid-cols-2 p-10 mx-6 overflow-hidden max-[600px]:flex">
@@ -39,53 +56,40 @@ const Login=()=>{
                     </h1>
                 </div>
 
-                {/* *SIgn In and Sign up button div */}
-                <div className=" flex justify-center h-12">
-                    <div className="flex bg-[#F0EFF2] rounded-xl p-1">
-                        <Button 
-                        type={"submit"}
-                        value= {"Sign In"}
-                        className={"transition ease-in-out delay-150 bg-[#F0F0F2] hover:bg-[#FFFFFF] hover:text-black text-[#FFFFFF] font-bold py-2 px-4"}
-                        onClick={navigate("/")}
-                        />
-
-                        <Button 
-                        type={"submit"}
-                        value= {"Sign Up"}
-                        className={"transition ease-in-out delay-150 bg-[#FFFFFF]  text-black font-bold py-2 px-4 rounded hover:bg-[#F0F0F2] duration-300"}
-                        // onClick={navigate("/signup")}
-                        />
-                    </div>
+                <signInSignUpDiv/>
                 
-
-                </div> 
-              
               {/* login form */}
                 <div className="grid grid-cols place-items-center ">
-                    <form onSubmit={handlesubmit && errorfunction}>
-                        <TextInput
-                            placeholder="Username"
+                    <form >
+                        <input
+                            placeholder="Email"
                             type="text"
-                            name= "userName"
-                            maxLength={10}
-                            // className="block text-md font-medium text-gray-900 p-2 mx-10 my-3 rounded-md"
-                            onChange={(e)=>setUserName(e.target.value)}
+                            name= "email"
+                            className="block text-md font-medium text-gray-900 p-2 mx-10 my-3 rounded-md"
+                            onChange={(e)=>setEmail(e.target.value)}
                         />
-                        <TextInput
-                            placeholder="Password"
-                            type="password"
-                            name="password"
-                            maxLength= {16}
-                            // className="block text-md font-medium text-gray-900 p-2 mx-10 mb-3 rounded-md"
-                            onChange={(e)=>setPassword(e.target.value)}
+                        <div className="flex">
+                            <input
+                                placeholder="Password"
+                                type={showPassword ? 'text': 'password'}
+                                name="password"
+                                value={password}
+                                className="block text-md font-medium text-gray-900 p-2 ml-10 mr-3 mb-3 rounded-md"
+                                onChange={(e)=>setPassword(e.target.value)}
+                            />
+                            {showPassword ? (
+                                    <FaEyeSlash onClick={handleTogglePasswordVisibility}/>
+                                ) : (
+                                    <FaEye onClick={handleTogglePasswordVisibility} />
+                                )}
+                        </div>
 
-                        />
                 {/* sign in button */}
                 <div className=" flex justify-center">
                     <button
                     type="submit"
                     className="bg-[#4e4ef3] text-[#FFFFFF] font-bold py-2 px-4 rounded-md hover:bg-[#FFFFFF] hover:text-blue-500"
-                    // onClick={()=>{navigate("/home")}}
+                    onClick={onLogin}
                     >Continue</button>
                 </div>
                 </form>
