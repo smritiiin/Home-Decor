@@ -50,20 +50,19 @@ const Nav =()=>{
     return null;
   }
 
-    return (
-            <div className='flex bg-[#5e6974] h-14 justify-between px-6
-            items-center relative z-10 shadow-lg '>
-              <div className='ml-5 mt-3 flex'>
-                <img src={logo} alt='Home' className='h-9 w-9'/>
-                <Link to="/" className='text-2xl text-white'>Homely Decor</Link>
-              </div>
+  return (
+      <div className='flex bg-[#023047] h-14 justify-between px-6 top-0
+        items-center relative z-10 shadow-lg '>
+        <div className='ml-5 mt-3 flex'>
+          <img src={logo} alt='Home' className='h-9 w-9'/>
+            <Link to="/" className='text-2xl text-white'>Homely Decor</Link>
+        </div>
               <div className=' mt-4' >
                 <ul className="flex">    
-                      <li><NavLink to="/home" className=" px-4" style={NavStyle} >Home</NavLink></li>
-                      <li><NavLink to="/" className=" px-4" style={NavStyle}>Blog</NavLink></li>
-                      <li><NavLink to="/" className=" px-4" style={NavStyle}>Contact Us</NavLink></li>
-                      {/* <li><NavLink to="/login" className=" px-4" style={NavStyle}>Login</NavLink></li>
-                      <li><NavLink to="/signup" className=" px-4" style={NavStyle}>Signup</NavLink></li> */}
+                      <li><NavLink to="/" className=" px-4" style={NavStyle} >Home</NavLink></li>
+                      <li><NavLink to="/product" className=" px-4" style={NavStyle}>Add Product</NavLink></li>
+                      <li><NavLink to="/login" className=" px-4" style={NavStyle}>Login</NavLink></li>
+                      <li><NavLink to="/signup" className=" px-4" style={NavStyle}>Signup</NavLink></li>
                       <li style={styles.navbarItemStyle}>
                         <div
                           onClick={onButtonClick}
@@ -82,7 +81,7 @@ const Nav =()=>{
   );}
 
 const NavStyle ={
-  color: "#c8c4b8",
+  color: "#a2d2ff",
   display: "flex",
   alignItems: "center",
   textDecoration:" none",
@@ -97,11 +96,11 @@ const styles ={
   },
   activeLinkStyle: {
     fontWeight: "bold",
-    color: "#7a4ec7",
+    color: "#a2d2ff",
     cursor: "pointer",
   },
   linkStyle: {
-    color: "000000",
+    color: "#a2d2ff",
     textDecoration: "none",
     fontWeight: "bold",
     cursor: "pointer",

@@ -1,9 +1,6 @@
-import {Button} from "./../Components/Button";
-// import {TextInput} from "./../Components/TextInput";
 import { useState } from 'react';
 import { Link, useNavigate} from 'react-router-dom';
 import {login} from '../API/login';
-import signInSignUpDiv from '../Components/SigninContainer';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 import coverimg from "../Assets/loginsvg.svg";
@@ -30,10 +27,9 @@ const Login=()=>{
         const resp = await login({ email, password });
         if (resp.success) {
             document.cookie = `x-access-token=${resp.data.token}; path=/;`;
-            alert("Navigating....");
             navigate("/");
         } else {
-            alert("NOOO...")
+            alert("Something went wrong...")
             alert(resp.error);
         }
       }

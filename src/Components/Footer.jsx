@@ -1,13 +1,13 @@
 import logo from '../Assets/logo.png';
 import {Link, NavLink} from 'react-router-dom';
 import {BsFacebook, BsInstagram, BsTwitter} from 'react-icons/bs';
-import {Button} from '../Components/Button';
+// import {Button} from '../Components/Button';
 import {TextInput} from '../Components/TextInput';
 
 
 export const Footer =()=>{
     return(
-        <div className=" flex-col  bg-slate-500 px-10 py-4 text-white">
+        <div className=" flex-col bottom-0 w-full bg-[#023047] px-10 py-4 text-white">
             <div className='flex'>
                 <img src={logo} alt='Home' className='h-20 w-18'/>
                 <Link to="/" className='text-2xl text-white'>Homely <br/> Decor</Link>
@@ -40,7 +40,7 @@ export const Footer =()=>{
                     </div>
                 </div>
             </div>
-            <div className='bg-[#5f6a75] py-2 px-7 -mb-4 -mx-10'>
+            <div className='bg-[#1d3557] py-2 px-7 -mb-4 -mx-10'>
                 © 2023 All rights reserved.
             </div>
         </div>

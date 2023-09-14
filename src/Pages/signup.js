@@ -1,6 +1,4 @@
 import {React, useState} from 'react';
-import {Button} from "./../Components/Button";
-// import {TextInput} from "./../Components/TextInput";
 import {Link} from 'react-router-dom';
 import {signup} from '../API/signup';
 
@@ -30,6 +28,7 @@ export const Signup=()=>{
         return true;
       };
 
+
     const onSubmit = async (e) => {
        console.log("CLICKED");
        e.preventDefault();
@@ -44,6 +43,8 @@ export const Signup=()=>{
         }
       };
 
+    
+
     return(
         // container div 
         <div className="grid grid-cols-2 h-full p-10 mx-6 overflow-hidden max-[600px]:flex">
@@ -55,25 +56,7 @@ export const Signup=()=>{
                         Homely Decor
                     </h1>
                 </div>
-                {/**SIgn In and Sign up button div */}
-                <div className=" flex justify-center h-12">
-                    <div className="flex bg-[#F0EFF2] rounded-xl p-1">
-                        <Button 
-                        type={"submit"}
-                        value= {"Sign In"}
-                        className={"transition ease-in-out delay-150 bg-[#F0F0F2] hover:bg-[#FFFFFF] hover:text-black text-[#FFFFFF] font-bold py-2 px-4"}
-                        // onClick={navigate("/")}
-                        />
-
-                        <Button 
-                        type={"submit"}
-                        value= {"Sign Up"}
-                        className={"transition ease-in-out delay-150 bg-[#FFFFFF]  text-black font-bold py-2 px-4 rounded hover:bg-[#F0F0F2] duration-300"}
-                        // onClick={navigate("/signup")}
-                        />
-                    </div>
-                </div> 
-              
+                
               {/* signup form */}
                 <div className="grid grid-cols place-items-center mt-8">
                     <form>
@@ -114,27 +97,25 @@ export const Signup=()=>{
                         <input
                             placeholder="Password"
                             type="password"
-                            maxLength= {16}
                             style={styles.input}
                             onChange = {(text) =>setSignupFields ({...signupFields, password: text.target.value})}
-                        />
+                        />                       
+                        
                         <input
                             placeholder="Confirm Password"
                             type="password"
-                            maxLength= {16}
                             style={styles.input}
                             onChange={(text)=>setSignupFields({...signupFields, confirmPassword: text.target.value })}
                         />
-                {/* sign in button */}
-                <div className=" flex justify-center">
-                    <button
-                    // type={"submit"}
-                    // value= {"Continue"}
-                    className={"bg-[#4e4ef3] text-[#FFFFFF] font-bold py-2 px-4 hover:bg-[#FFFFFF] hover:text-blue-500"}
-                    onClick={onSubmit}
-                    >Sign Up</button>
-                </div>
-                </form>
+                                                
+                        {/* sign in button */}
+                        <div className=" flex justify-center">
+                            <button
+                                className={"bg-[#4e4ef3] text-[#FFFFFF] font-bold py-2 px-4 hover:bg-[#FFFFFF] hover:text-blue-500 rounded-md mt-5"}
+                                onClick={onSubmit}
+                            >Sign Up</button>
+                        </div>
+                    </form>
                 </div>
                 <div style={{marginTop:30,marginBottom:0}}>
                         <div style={{
@@ -182,7 +163,7 @@ const styles ={
         fontWeight: 500,
         color: "rgb(17 24 39 / var(--tw-text-opacity))",
         marginLeft: '2.5rem',
-        marginRight: '2.5rem',
+        marginRight: '.5rem',
         marginTop: '.25rem',
         width: '18rem',
         borderWidth: '1px'

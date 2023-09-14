@@ -2,6 +2,7 @@ import './App.css';
 import {BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from "./Pages/login";
 import Home from "./Pages/home";
+import Addproduct from "./Pages/addProduct";
 // import Todo from './Pages/try/thisisthis';
 import {Signup} from "./Pages/signup";
 // import Switch from "./Pages/try/index"
@@ -16,6 +17,7 @@ function App() {
         <Route exact path="/" element={<Home/>}/>
         <Route exact path="/login" element={<Login/>}/>
         <Route exact path="/home" element={<Home/>}/>
+        <Route exact path="/product" element={<Addproduct/>}/>
         <Route exact path='/signup' element={<Signup/>}/>
       </Routes>
     </BrowserRouter>

@@ -11,7 +11,7 @@ export const signup = async ({ fname, lname, email,number, password, confirmPass
       password,
       confirmPassword
     });
-
+    
     const data = response?.data;
     return { success: true, data };
   } catch (error) {
